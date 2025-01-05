@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cartaos', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('numero', 16)->unique();
-            $table->date('data_validade');
-            $table->string('cvv', 4);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('nome');
+            $table->string('sobrenome');
+            $table->string('email')->unique();
+            $table->date('data_nascimento');
+            $table->string('endereco');
+            $table->string('telefone');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cards');
+        Schema::dropIfExists('usuarios');
     }
 };

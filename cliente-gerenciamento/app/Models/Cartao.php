@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\User;
 
 class Cartao extends Model
 {
+    protected $table = 'cartoes';
+    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -18,14 +19,15 @@ class Cartao extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'usuario_id',
         'numero',
         'data_validade',
-        'cvv',
+        'cvv'
     ];
 
 
-    public function user()
+    public function usuario()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Usuario::class);
     }
 }

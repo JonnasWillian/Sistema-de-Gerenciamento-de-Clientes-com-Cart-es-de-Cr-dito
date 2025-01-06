@@ -17,7 +17,12 @@ class UsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => $this->faker->name,
+            'sobrenome' => $this->faker->lastName,
+            'email' => $this->faker->unique()->safeEmail(),
+            'data_nascimento' => $this->faker->date,
+            'endereco' => $this->faker->streetAddress,
+            'telefone' => $this->faker->phoneNumber,
         ];
     }
 }
